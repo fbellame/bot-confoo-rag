@@ -14,8 +14,8 @@ def embed_doc(directory_path):
 
         raw_documents = loader.load()
         
-        # SPLITTER EN CHUNK DE 1000 TOKENS
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap=0, length_function= len)
+        # SPLITTER EN CHUNK DE 100 TOKENS
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size = 100, chunk_overlap=0, length_function= len)
         documents = text_splitter.split_documents(raw_documents)
 
         # EMBEDDED LES DOCUMENTS CHUNKS
