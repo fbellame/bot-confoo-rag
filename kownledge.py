@@ -29,22 +29,3 @@ def get_chain(vectorstore):
     )
     return chain
 
-# vectorstore = embed_doc("data")
-
-# chain = get_chain(vectorstore)
-
-# question = "Quelle conférence Farid va présenter à Confoo?"
-
-# #
-# # ROUTAGE SÉMANTIQUE
-# route = dl(question)
-
-# if route.name is not None:
-#     #
-#     # ROUTE TROUVÉE, on parle d'un des sujets autorisés!, APPEL DU LLM AVEC LE CONTEXTE ET LA QUESTION
-#     print(chain.invoke(question))
-# else:
-#     #
-#     # AUCUNE ROUTE DE TROUVÉ ?
-#     #    -> NE PAS APPELER LE LLM, faire une réponse toute faite!
-#     print("Désolé, je ne répond qu'aux questions sur Confoo et Farid!")
