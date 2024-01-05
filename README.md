@@ -10,6 +10,8 @@ Utilisation de [LangChain](https://langchain.readthedocs.io/en/latest/index.html
 
 Utilisation de [OpenAI](https://platform.openai.com/docs/introduction) pour le [LLM](https://www.mlq.ai/what-is-a-large-language-model-llm/) (Large Language Model).
 
+Gestion des routes sémantiques avec [semantic-router](https://github.com/aurelio-labs/semantic-router)
+
 Utilisation de [SreamLit](https://docs.streamlit.io/) pour gérer le server et l'interface Web du Bot.
 
 Pour installer les librairie Python requises:

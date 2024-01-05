@@ -7,34 +7,20 @@ from streamlit_chat import message
 import os
 from ingest_data import embed_doc
 import openai
-from query_data import get_chain, QA_PROMPT, CONDENSE_QUESTION_PROMPT, _template
-import pickle
+from langchain.chains import LLMChain
+from route import dl
+from kownledge import get_chain
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 st.set_page_config(page_title="Bot KB Demo", page_icon=":shark:")
 st.header("Bot KB Demo")
 
-uploaded_file = st.file_uploader("Télécharger votre base de connaissances pour votre chat bot", type=None, accept_multiple_files=False, key=None,
-                                 help=None, on_change=None, args=None, kwargs=None, disabled=False, label_visibility="visible")
-
-if uploaded_file is not None and uploaded_file not in os.listdir("data"):
-    
-    with open("data/" + uploaded_file.name, "wb") as f:
-
-        f.write(uploaded_file.getvalue())
-
-    st.write("Base de connaissances téléchargée avec succès!")
-
-    with st.spinner("Embedding de la base de connaissance..."):
-        index = embed_doc("data")
-
-vectorstore = None
-
-if "vectorstore.pkl" in os.listdir("."):
-    with open("vectorstore.pkl", "rb") as f:
-        vectorstore = pickle.load(f)
-        print("Chargement du vertorstore...")
+if "vectorstore" not in st.session_state:
+    with st.spinner("Vector Database: création de la base de connaissance..."):
+        vectorstore = embed_doc("data")
+        st.session_state["vectorstore"] = vectorstore
+        st.write("Base de connaissances créée avec succès!")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -50,22 +36,31 @@ def get_text():
 
 user_input = get_text()
 
+if "vectorstore" in st.session_state:
+    vectorstore = st.session_state["vectorstore"]
+
 if st.button("Soumettre question") and vectorstore is not None:
+    chain: LLMChain
 
     chain = get_chain(vectorstore)
 
-    #
-    # COSINE SIMILARITY -> RECHERCHE DANS LE VECTOR STORE
-    #
-    docs = vectorstore.similarity_search(user_input)
-
     if user_input:
-        
+        question = user_input
+
         #
-        # APPEL A OPENAI AVEC LE PROMTP CONTENANT les 2 DOCUMENTS TROUVÉS ET LA QUESTION
-        #
-        output = chain.run(input=user_input, vectorstore=vectorstore, context=docs[:2], chat_history=[], question=user_input, 
-                           QA_PROMPT=QA_PROMPT, CONDENSE_QUESTION_PROMPT=CONDENSE_QUESTION_PROMPT, template=_template)
+        # ROUTAGE SÉMANTIQUE
+        route = dl(question)
+
+        if route.name is not None:
+            print(route.name)
+            #
+            # ROUTE TROUVÉE, on parle d'un des sujets autorisés!, APPEL DU LLM AVEC LE CONTEXTE ET LA QUESTION
+            output = chain.invoke(question)
+        else:
+            #
+            # AUCUNE ROUTE DE TROUVÉ ?
+            #    -> NE PAS APPELER LE LLM, faire une réponse toute faite!
+            output = "Désolé, je ne répond qu'aux questions sur Confoo et Farid!"
 
         st.session_state.past.append(user_input)
         st.session_state.generated.append(output)
@@ -74,7 +69,7 @@ if st.button("Soumettre question") and vectorstore is not None:
 
     placeholder = ""
 
-if st.session_state["generated"]:
+if "generated" in st.session_state and st.session_state["generated"]:
     for i in range(len(st.session_state["generated"]) -1, -1, -1):
         message(st.session_state["generated"][i], key=str(i), avatar_style='adventurer')
         message(st.session_state["past"][i], is_user=True, key=str(i) + "_user", avatar_style='big-smile')

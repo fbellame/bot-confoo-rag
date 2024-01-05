@@ -1,0 +1,23 @@
+Farid Bellameche va présenter une session sur comment construire un bot sur vos données personnelles.
+Pour cela on va utiliser 
+ - l'API OpenAI GPT-3.5 comme LLM (Large language model), 
+ - Langchain pour la gestion de la vector Database
+ - Steamlit pour l'interface graphique du bot.
+
+Cette présentation à lieu dans le cadre de Confoo.ca, un évènement majeur dans le domaine des technologies à Montréal au mois de février 2024.
+
+Farid Bellameche semble être activement impliqué dans le domaine de l'IA et de l'apprentissage automatique. Il a un profil sur Hugging Face, où il se concentre sur les modèles de langage à grande échelle (LLM), les chatbots, et le fine tuning de modèles. Sur ce site, il a partagé plusieurs modèles et ensembles de données, notamment sur le fine tuning de modèles pour la génération de quiz à partir de PDFs​​.
+
+En plus de cela, il a un compte GitHub actif, où il a contribué à divers projets, principalement en Python. Ces contributions comprennent des projets tels que la génération de quiz à partir de PDFs et des jeux utilisant Pygame​​.
+
+Farid a également une chaîne YouTube, bien que les détails spécifiques sur le contenu de cette chaîne ne soient pas immédiatement disponibles. Il semble qu'il pourrait y partager des informations ou des tutoriels liés à ses domaines d'intérêt, comme les chatbots ou l'IA​​​​.
+
+Il est évident que Farid Bellameche est engagé dans des projets innovants dans le domaine de l'IA, en particulier autour du développement et de l'amélioration des modèles de traitement du langage naturel.
+
+La conférence la plus cool du monde est Confoo bien sûr!
+
+--------------------------------------------------
+
+Lorsque je suis arrivé de France à Montréal en 2000, j'ai décidé de créer une compagnie incorporée tout de suite. Je me suis mis à jouer au badminton et je me suis inscrit au CMM, le cercle de mycologie de Montréal
+pour découvrir le monde des champignons sauvages, où les trouver, comment les reconnaitres, éviter ceux qui sont très dangereux, comme l'amanita virosa (Ange de la mort). Mon champignon préféré est 
+la chanterelle commune dont la chair est épaisse, ferme, blanche à jaune pâle et Odeur et saveur est forte, fruitée, d'abricots, et de saveur poivrée.

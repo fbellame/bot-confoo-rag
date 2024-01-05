@@ -2,9 +2,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import DirectoryLoader
 from langchain.vectorstores.faiss import FAISS
 from langchain.embeddings import OpenAIEmbeddings
-import pickle
 import os
-
 
 def embed_doc(directory_path):
     if len(os.listdir(directory_path)) > 0:
@@ -14,18 +12,12 @@ def embed_doc(directory_path):
 
         raw_documents = loader.load()
         
-        # SPLITTER EN CHUNK DE 100 TOKENS
-        text_splitter = RecursiveCharacterTextSplitter(chunk_size = 100, chunk_overlap=0, length_function= len)
+        # SPLITTER EN CHUNK DE 200 TOKENS
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size = 200, chunk_overlap=0, length_function= len)
         documents = text_splitter.split_documents(raw_documents)
 
         # EMBEDDED LES DOCUMENTS CHUNKS
         embeddings = OpenAIEmbeddings()
         vectorstore = FAISS.from_documents(documents, embeddings)
 
-        # SAUVEGARDER DANS LE VECTOR STORE
-        with open("vectorstore.pkl", "wb") as f:
-            pickle.dump(vectorstore, f)
-
-if os.path.exists("vectorstore.pkl"):
-    with open("vectorstore.pkl", "rb") as f:
-        docsearch = pickle.load(f)
+        return vectorstore
