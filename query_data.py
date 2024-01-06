@@ -25,7 +25,7 @@ Question: {question}
 =========
 {context}
 =========
-Réponse en Markdown:"""
+Réponse:"""
 QA_PROMPT = PromptTemplate(template=template, input_variables=["question", "context"])
 
 #########################################################
