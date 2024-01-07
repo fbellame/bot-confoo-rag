@@ -15,26 +15,11 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 st.set_page_config(page_title="Bot KB Demo", page_icon=":shark:")
 st.header("Bot KB Demo")
 
-uploaded_file = st.file_uploader("Télécharger votre base de connaissances pour votre chat bot", type=None, accept_multiple_files=False, key=None,
-                                 help=None, on_change=None, args=None, kwargs=None, disabled=False, label_visibility="visible")
-
-if uploaded_file is not None and uploaded_file not in os.listdir("data"):
-    
-    with open("data/" + uploaded_file.name, "wb") as f:
-
-        f.write(uploaded_file.getvalue())
-
-    st.write("Base de connaissances téléchargée avec succès!")
-
-    with st.spinner("Embedding de la base de connaissance..."):
-        index = embed_doc("data")
-
-vectorstore = None
-
-if "vectorstore.pkl" in os.listdir("."):
-    with open("vectorstore.pkl", "rb") as f:
-        vectorstore = pickle.load(f)
-        print("Chargement du vertorstore...")
+if "vectorstore" not in st.session_state:
+    with st.spinner("Vector Database: création de la base de connaissance..."):
+        vectorstore = embed_doc("data")
+        st.session_state["vectorstore"] = vectorstore
+        st.write("Base de connaissances créée avec succès!")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -49,6 +34,9 @@ def get_text():
     return input_text
 
 user_input = get_text()
+
+if "vectorstore" in st.session_state:
+    vectorstore = st.session_state["vectorstore"]
 
 if st.button("Soumettre question") and vectorstore is not None:
 

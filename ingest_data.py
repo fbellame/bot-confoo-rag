@@ -22,10 +22,4 @@ def embed_doc(directory_path):
         embeddings = OpenAIEmbeddings()
         vectorstore = FAISS.from_documents(documents, embeddings)
 
-        # SAUVEGARDER DANS LE VECTOR STORE
-        with open("vectorstore.pkl", "wb") as f:
-            pickle.dump(vectorstore, f)
-
-if os.path.exists("vectorstore.pkl"):
-    with open("vectorstore.pkl", "rb") as f:
-        docsearch = pickle.load(f)
+        return vectorstore
