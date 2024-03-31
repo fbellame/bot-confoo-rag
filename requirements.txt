@@ -1,9 +1,12 @@
+langchain-community
 langchain
-openai
 streamlit
 streamlit-chat
 unstructured
 tiktoken
 faiss-gpu
 semantic-router
+semantic-router[local]
 grandalf
+transformers
+sentence_transformers

@@ -1,7 +1,7 @@
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import DirectoryLoader
 from langchain.vectorstores.faiss import FAISS
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_community.embeddings.huggingface import HuggingFaceEmbeddings
 import os
 
 def embed_doc(directory_path):
@@ -17,7 +17,7 @@ def embed_doc(directory_path):
         documents = text_splitter.split_documents(raw_documents)
 
         # EMBEDDED LES DOCUMENTS CHUNKS
-        embeddings = OpenAIEmbeddings()
+        embeddings = HuggingFaceEmbeddings()
         vectorstore = FAISS.from_documents(documents, embeddings)
 
         return vectorstore

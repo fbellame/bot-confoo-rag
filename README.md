@@ -1,7 +1,11 @@
 ### Chat Bot avec une base de connaissances (KB)
 
 <br>
-Chat Bot avec un KB local pour Confoo
+Chat Bot avec un KB local pour Confoo, pas d'utilisation d'OpenAI, tout est en local.
+
+
+Cette version requiert un GPU mais il est aussi possible aussi d'utiliser llamacpp en changeant les dépendance pour exécuter le tout sur du CPU.
+
 
 L'objectif de ce bot est de permettre de répondre aux questions d'un utilisateur sur une base de connaissances qui est privée.
 
@@ -30,7 +34,5 @@ Pour exécuter le chat Bot:
 Une fois le serveur lancé, déposer par drag and drop le fichier [farid-RAG.txt](demo/farid-RAG.txt).
 
 Cela devrait générer le vector store vectorstore.pkl. Ce vector store contient la version embeddings du fichier déposé.
-
-Pour plus de détail sur les embeddings voir [OpenAI Embeddings](https://platform.openai.com/docs/guides/embeddings/).
 
 Vous pouvez maintenant poser votre question...

@@ -1,5 +1,5 @@
 from semantic_router import Route
-from semantic_router.encoders import OpenAIEncoder
+from semantic_router.encoders import HuggingFaceEncoder
 from semantic_router.layer import RouteLayer
 
 # Route for Confoo conversation
@@ -29,7 +29,7 @@ technologie = Route(name="technologie", utterances=[
     "vector database"
 ])
 
-encoder = OpenAIEncoder()
+encoder = HuggingFaceEncoder()
 
 routes=[confoo, farid, technologie]
 
