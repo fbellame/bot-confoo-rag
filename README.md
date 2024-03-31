@@ -12,7 +12,7 @@ L'objectif de ce bot est de permettre de répondre aux questions d'un utilisateu
 
 Utilisation de [LangChain](https://langchain.readthedocs.io/en/latest/index.html) pour fabriquer une base de données de connaissances en locale avec le contenu du fichier farid-RAG.txt.
 
-Utilisation de [OpenAI](https://platform.openai.com/docs/introduction) pour le [LLM](https://www.mlq.ai/what-is-a-large-language-model-llm/) (Large Language Model).
+Utilisation de [Mistral 7B](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) pour le [LLM](https://www.mlq.ai/what-is-a-large-language-model-llm/) (Large Language Model).
 
 Gestion des routes sémantiques avec [semantic-router](https://github.com/aurelio-labs/semantic-router)
 
