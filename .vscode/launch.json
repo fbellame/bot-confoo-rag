@@ -8,7 +8,7 @@
             "name": "Python: Streamlit",
             "type": "python",
             "request": "launch",
-            "program": "/home/farid/.conda/envs/semantic-router/bin/streamlit",
+            "program": "/home/farid/.conda/envs/semantic-router-local/bin/streamlit",
             "console": "integratedTerminal",
             "args": ["run", "server.py"]
         }
