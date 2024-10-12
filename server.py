@@ -13,8 +13,9 @@ from kownledge import get_chain
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-st.set_page_config(page_title="Bot KB Demo", page_icon=":shark:")
-st.header("Bot KB Demo")
+title = "Bot KB Demo (semantic router)"
+st.set_page_config(page_title=title, page_icon=":shark:")
+st.header(title)
 
 if "vectorstore" not in st.session_state:
     with st.spinner("Vector Database: création de la base de connaissance..."):
@@ -50,6 +51,8 @@ if st.button("Soumettre question") and vectorstore is not None:
         #
         # ROUTAGE SÉMANTIQUE
         route = dl(question)
+        
+        print(route)
 
         if route.name is not None:
             print(route.name)

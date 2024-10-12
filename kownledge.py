@@ -1,12 +1,8 @@
 from langchain.prompts import ChatPromptTemplate
 from langchain_community.chat_models import ChatOpenAI
-
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from ingest_data import embed_doc
 from callback import MyCustomHandler
-from route import dl
-
 
 def get_chain(vectorstore):
 
@@ -19,7 +15,7 @@ def get_chain(vectorstore):
     """
     prompt = ChatPromptTemplate.from_template(template)
 
-    model = ChatOpenAI(callbacks=[MyCustomHandler()])
+    model = ChatOpenAI(model_name="gpt-4o-mini", callbacks=[MyCustomHandler()])
 
     chain = (
         {"context": retriever, "question": RunnablePassthrough()}

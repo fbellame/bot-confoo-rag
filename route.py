@@ -21,16 +21,8 @@ farid = Route(name="farid", utterances=[
     ]
 )
 
-# Route for technologies
-technologie = Route(name="technologie", utterances=[
-    "langchain",
-    "streamlit",
-    "openai",
-    "vector database"
-])
-
 encoder = OpenAIEncoder()
 
-routes=[confoo, farid, technologie]
+routes=[confoo, farid]
 
 dl = RouteLayer(encoder=encoder, routes=routes)

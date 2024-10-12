@@ -4,6 +4,6 @@ streamlit
 streamlit-chat
 unstructured
 tiktoken
-faiss-gpu
+faiss-cpu
 semantic-router
 grandalf
