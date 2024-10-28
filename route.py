@@ -3,26 +3,34 @@ from semantic_router.encoders import OpenAIEncoder
 from semantic_router.layer import RouteLayer
 
 # Route for Confoo conversation
-confoo = Route(
-    name="confoo",
+conference = Route(
+    name="/dev/mtl",
     utterances=[        
-        "Confoo est la place pour les développeurs",
-        "Confoo est une importante conférence pour les développeurs à Montréal",
-        "Confoo date",
-        "Confoo c'est quoi?"
+        "dev mtl",
+        "/dev/mtl",
+        "/dev/mtl2024",
+        "conf",
+        "conference"
     ]
 )
 
 # Route for Farid
 farid = Route(name="farid", utterances=[
-    "Farid Bellameche est passioné d'IA",
-    "Farid Bellameche va animer une session sur les chatbot avec données privées",
+    "Farid Bellameche",
     "Farid"
+    ]
+)
+
+# Route for Joke
+joke = Route(name="joke", utterances=[
+    "Joke",
+    "Blague",
+    "Amusement"
     ]
 )
 
 encoder = OpenAIEncoder()
 
-routes=[confoo, farid]
+routes=[conference, farid, joke]
 
 dl = RouteLayer(encoder=encoder, routes=routes)

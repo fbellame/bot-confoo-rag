@@ -1,4 +1,5 @@
 langchain
+langchain-openai
 openai
 streamlit
 streamlit-chat
@@ -7,3 +8,5 @@ tiktoken
 faiss-cpu
 semantic-router
 grandalf
+flashrank
+langchain-google-community

@@ -6,12 +6,19 @@
     "configurations": [
         {
             "name": "Python: Streamlit",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "/home/farid/.conda/envs/semantic-router/bin/streamlit",
             "console": "integratedTerminal",
             "args": ["run", "server.py"]
-        }
-        
+        },
+        {
+            "name": "Python: Streamlit MacOS",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/Users/faridbellameche/miniconda3/envs/semantic-route/bin/streamlit",
+            "console": "integratedTerminal",
+            "args": ["run", "server.py"]
+        },        
     ]
 }

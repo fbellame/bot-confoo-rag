@@ -4,13 +4,15 @@ Pour cela on va utiliser
  - Langchain pour la gestion de la vector Database
  - Steamlit pour l'interface graphique du bot.
 
-Cette présentation à lieu dans le cadre de Confoo.ca, un évènement majeur dans le domaine des technologies à Montréal au mois de février 2024.
+Cette présentation à lieu dans le cadre de /dev/mtl 2024, un évènement dans le domaine des technologies à Montréal au mois de novembre 2024.
 
 Farid Bellameche est un passioné d'IA générative, dev/ops et développeur Java et Python.
 Depuis la sortie en novembre 2022 de chat GPT, j'ai exploré comment utiliser les API d'OpenAI pour en faire des chatbot augmenté avec le pattern de RAG (Retrieval Augmented Generation).
 J'ai aussi appris à entrainer des LLM (fine tuning) sur des tâches spécifiques.
 
-La conférence la plus cool du monde est Confoo bien sûr!
+La conférence la plus cool du monde est /dev/mtl 2024 bien sûr!
+
+Xavier Bouclet est le fondateur et principal organisateur de /dev/mtl
 
 --------------------------------------------------
 
